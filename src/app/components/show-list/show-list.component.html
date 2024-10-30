@@ -14,8 +14,8 @@
   <tbody>
     <ng-container *ngFor="let show of shows">
       <tr *ngIf="!toEdit(show)">
-        <td>{{ show.id }}</td>
-        <td>{{ show.title }}</td>
+        <td (click)="showDetails(show)">{{ show.id }}</td>
+        <td (click)="showDetails(show)">{{ show.title }}</td>
         <td><button (click)="edit(show)">
 
             <div class="d-flex justify-content-center">

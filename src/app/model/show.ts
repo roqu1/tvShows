@@ -1,4 +1,8 @@
 export class Show {
-  constructor(public id:number, public title:string) {
-  }
+  constructor(
+    public id: number,
+    public title: string,
+    public image?: string,
+    public summary?: string,
+  ) {}
 }

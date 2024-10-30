@@ -46,4 +46,8 @@ export class ShowListComponent {
       this.editShow = null;
     }
   }
+
+  showDetails(show: Show): void {
+    this.showData.showShowDetails(show);
+  }
 }
