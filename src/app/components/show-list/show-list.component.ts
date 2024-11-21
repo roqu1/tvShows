@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
 import { Show } from '../../model/show';
-import { NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { ShowData } from '../../service/show-data.service';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-show-list',
   standalone: true,
-  imports: [NgForOf, NgIf, FormsModule],
+  imports: [NgForOf, NgIf, FormsModule, AsyncPipe],
   templateUrl: './show-list.component.html',
   styleUrl: './show-list.component.css',
 })
 export class ShowListComponent {
-  shows: Show[] = [];
+  shows$: Observable<Show[]>;
   editShow: Show;
 
   constructor(private showData: ShowData) {}
 
   ngOnInit() {
-    this.shows = this.showData.getShows();
+    this.shows$ = this.showData.getShows();
   }
 
   edit(show: Show) {
@@ -27,7 +28,7 @@ export class ShowListComponent {
 
   delete(show: Show) {
     this.showData.deleteShow(show);
-    this.shows = this.showData.getShows();
+    this.shows$ = this.showData.getShows();
   }
 
   toEdit(show: Show): boolean {

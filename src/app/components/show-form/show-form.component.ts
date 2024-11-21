@@ -14,11 +14,11 @@ export class ShowFormComponent {
   show: Show;
 
   constructor(private showData: ShowData) {
-    this.show = new Show(null, null);
+    this.show = new Show(null, null, null);
   }
 
   save() {
     this.showData.saveShow(this.show);
-    this.show = new Show(null, null);
+    this.show = new Show(null, null, null);
   }
 }
